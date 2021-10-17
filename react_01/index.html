@@ -10,6 +10,7 @@
         <div id="page"></div>
         <div id="page2"></div>
         <div id="page3"></div>
+        <div id="page4"></div>
         <script type="text/babel">
             //JSX nélkül
             let hello = React.createElement('h1',{},'Hello World!');
@@ -17,6 +18,10 @@
             //JSX
             let hello2 = <h1>Hello World!</h1>;
             ReactDOM.render(hello2, document.getElementById('page2'));
+
+            let name = 'Krigovszki Bálint';
+            let hello3 = <h1>Hello {name}!</h1>;
+            ReactDOM.render(hello3, document.getElementById('page4'))
             //Osztály alapó renderelés
             class Hello extends React.Component {
                 render()
@@ -25,6 +30,23 @@
                 }
             }
             ReactDOM.render(<Hello />, document.getElementById('page3'));
+
+            class Nevjegy extends React.Component {
+                constructor(props)
+                {
+                    super(props);
+
+                    //props.nev = 'Krigovszki';
+                }
+                render()
+                {
+                    return  <div class="nevjegy">
+                            <h1>Név: {this.props.nev}</h1>
+                            <h2>Email cím: {this.props.email}</h2>
+                            </div>;
+                }
+            }
+            ReactDOM.render(<Nevjegy nev="Krigovszki Bálint" email="krigovszki.balint@gmail.com"/>, document.getElementById('page4'));
         </script>
     </body>
 </html>
